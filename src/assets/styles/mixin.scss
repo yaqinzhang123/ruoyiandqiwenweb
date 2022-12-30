@@ -1,0 +1,101 @@
+@mixin clearfix {
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
+@mixin scrollBar {
+  &::-webkit-scrollbar-track-piece {
+    background: #d3dce6;
+  }
+
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: #99a9bf;
+    border-radius: 20px;
+  }
+}
+
+@mixin relative {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+@mixin pct($pct) {
+  width: #{$pct};
+  position: relative;
+  margin: 0 auto;
+}
+
+@mixin triangle($width, $height, $color, $direction) {
+  $width: $width/2;
+  $color-border-style: $height solid $color;
+  $transparent-border-style: $width solid transparent;
+  height: 0;
+  width: 0;
+
+  @if $direction==up {
+    border-bottom: $color-border-style;
+    border-left: $transparent-border-style;
+    border-right: $transparent-border-style;
+  }
+
+  @else if $direction==right {
+    border-left: $color-border-style;
+    border-top: $transparent-border-style;
+    border-bottom: $transparent-border-style;
+  }
+
+  @else if $direction==down {
+    border-top: $color-border-style;
+    border-left: $transparent-border-style;
+    border-right: $transparent-border-style;
+  }
+
+  @else if $direction==left {
+    border-right: $color-border-style;
+    border-top: $transparent-border-style;
+    border-bottom: $transparent-border-style;
+  }
+}
+
+// 设置滚动条样式
+// $scrollbarWidth：滚动条宽度
+// trackColor：轨道颜色
+// $thumbColor：滑块颜色
+@mixin setScrollbar($scrollbarWidth, $trackColor : #EBEEF5, $thumbColor : #909399) {
+  // 修改滚动条下面的宽度
+  &::-webkit-scrollbar {
+    width: $scrollbarWidth;
+  }
+  // 修改滚动条的下面的样式
+  &::-webkit-scrollbar-track {
+    background-color: $trackColor;
+    -webkit-border-radius: 2em;
+    -moz-border-radius: 2em;
+    border-radius: 2em;
+  }
+  // 修改滑块
+  &::-webkit-scrollbar-thumb {
+    background-color: $thumbColor;
+    -webkit-border-radius: 2em;
+    -moz-border-radius: 2em;
+    border-radius: 2em;
+  }
+}
+// 设置文字过长显示省略号
+// line：在当前行显示省略号
+@mixin  setEllipsis($line) {
+  display: -webkit-box;
+  overflow: hidden;
+  white-space: wrap;
+  text-overflow: ellipsis;
+  -webkit-box-orient: vertical; /* -webkit-box-orient 必须结合的属性 ，设置或检索伸缩盒对象的子元素的排列方式 */
+  -webkit-line-clamp: $line; /* -webkit-line-clamp用来限制在一个块元素显示的文本的行数 */
+}
