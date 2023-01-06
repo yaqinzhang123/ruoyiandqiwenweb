@@ -42,7 +42,7 @@ module.exports = {
         }
       },
       [process.env.VUE_APP_FILE_API]: {
-        target: "http://39.100.235.106:8866",
+        target: "http://localhost:8866",
         pathRewrite: {
           "^/api": "",
         },

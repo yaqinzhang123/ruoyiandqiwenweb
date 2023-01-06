@@ -21,7 +21,7 @@ const loginTip = function () {
 axios.defaults.timeout = 10000 * 5
 
 // 请求基础 URL
-axios.defaults.baseURL = process.env.VUE_APP_FILE_API
+axios.defaults.baseURL = process.env.VUE_APP_BASE_API
 
 
 // POST 请求头
