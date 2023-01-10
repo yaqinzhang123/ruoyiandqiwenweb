@@ -93,7 +93,7 @@ export default {
   },
   methods: {
     toggleSideBar() {
-      this.$store.dispatch('app/toggleSideBar')
+      this.$store.dispatch('app/toggleSideBar');
     },
     async logout() {
       this.$confirm('确定注销并退出系统吗？', '提示', {
