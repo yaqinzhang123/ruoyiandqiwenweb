@@ -14,6 +14,14 @@ import sideMenu from './modules/sideMenu' //  公共模块
 Vue.use(Vuex)
 
 const store = new Vuex.Store({
+  state:{
+    webSocketMsg:''
+},
+mutations:{
+  SET_WS_MSG: (state, msg) =>{
+      state.webSocketMsg = msg
+  }
+},
   modules: {
     app,
     dict,

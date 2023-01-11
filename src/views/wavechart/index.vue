@@ -5,16 +5,18 @@
             element-loading-background="rgba(0, 0, 0, 0.8)"></div>
         <div :class="!mylinkageClicked?'linkage':'linkage linkage-active'" title="二三维联动" @click=mylinkageClick()></div>
         <Configuration name="configuration" :data="data" :show="show" @output="output" />
-        <el-button @click="ws">测试webSocket</el-button>
+       
+        <el-button @click="sending()">sending</el-button>
     </div>
 
 </template>
 <script>
 import * as echarts from 'echarts'
 import { getData, routeToWgs, wgsToRoute } from '@/api/wavecharts/wavechart'
+import { testApi} from '@/api/file/file'
 import Configuration from './configuration/configuration'
 import { FloatDiv, FloatSub } from '@/utils/floatMath.js'
-
+import { initWebSocket, sendSock, webSocketClose } from '@/utils/websocket1.js'
 export default {
     props: {
     },
@@ -60,6 +62,7 @@ export default {
             level: 5,
             route:0,
             mylinkageClicked:false,
+            wsUrl:'ws://192.168.30.139:8080/ws',
         }
     },
     beforeDestroy() {
@@ -74,12 +77,37 @@ export default {
             this.viewer = window.CesiumViewer;
             this.searchData();
         }, 1000);
+        initWebSocket(this.wsUrl)
     },
     created() {
-
     },
-    methods: {//this.$emit("changeCount", this.num)//调用父组件方法
-                  
+    computed: {
+    getSocketMsg() {
+      return this.$store.state.webSocketMsg
+    },
+  },
+  //监控 getSocketMsg 是否有接收到数据
+  watch: {
+    getSocketMsg: {
+      handler: function (val) {
+        this.getConfigResult(val)
+      },
+    },},
+    beforeDestroy(){
+        console.log("beforeDestroy");
+        this.handleClose()
+    },
+    methods: {
+        
+        getConfigResult(val) { 
+            console.log(val);
+        }, 
+        sending() {
+      sendSock('发送的信息')
+    }, handleClose() {
+     //关闭连接
+      webSocketClose()
+    },
         dialog(show, i, type, name) {
             this.show = show;
 
@@ -248,11 +276,12 @@ export default {
                 alldata.forEach((element, index) => {
                     // var divs = this.keys.indexOf(key) + 1;
                     if (index % 100 == 0) {
-                        var y = element[1] / param + offset;
+                        var y = element[1] / (param*7) + offset;
                         var data = [element[0], y];
                         datas.push(data);
                     }
                 });
+                // console.log(datas);
                 this.series.push({
                     name: name,
                     type: "line",
@@ -290,9 +319,11 @@ export default {
                         that.tooltipData = params[0].data[0];
                         that.route=params[0].data[0];
                         let str = `里程值：KM${Math.trunc(value / 1000).toString()}+${Math.trunc(value % 1000).toString()}` + "<br/>";
+                        // console.log(params);
                         //params是数组格式
                         for (let item of params) {
                             //设置浮层图形的样式跟随图中展示的颜色
+                        
                             str +=
                                 "<span style='display:inline-block;width:10px;height:10px;border-radius:10px;background-color:" +
                                 item.color +
@@ -365,26 +396,34 @@ export default {
         },
         getData(name, index) {
             var data = [];
-            let i = 0;
-            this.names.filter((value, index) => {
-                if (value === name) {
-                    i = index;
-                    return;
-                }
-            })
-            //["三角坑","水平","轨距","右轨向","左轨向", "右高低","左高低"],
-            switch (i) {
-                case 6: data = [...this.alldata.lefthigh]; break;
-                case 5: data = [...this.alldata.righthigh]; break;
-                case 4: data = [...this.alldata.leftdirect]; break;
-                case 3: data = [...this.alldata.rightdirect]; break;
-                case 2: data = [...this.alldata.gauge]; break;
-                case 1: data = [...this.alldata.horizontal]; break;
-                case 0: data = [...this.alldata.tri]; break;
-                default: break;
-            }
-            var res = data[index][1].toFixed(2) + "mm";
-            return res;
+    var unit = "mm";
+    switch (name) {
+      case "左高低":
+        data = [...this.alldata.lefthigh];
+        break;
+      case "右高低":
+        data = [...this.alldata.righthigh];
+        break;
+      case "左轨向":
+        data = [...this.alldata.leftdirect];
+        break;
+      case "右轨向":
+        data = [...this.alldata.rightdirect];
+        break;
+      case "轨距":
+        data = [...this.alldata.gauge];
+        break;
+      case "水平":
+        data = [...this.alldata.horizontal];
+        break;
+      case "三角坑":
+        data = [...this.alldata.tri];
+        break;
+      default:
+        break;
+    }
+    var res = data[index][1].toFixed(2) + unit;
+    return res;
         },
         output(data) {
             let num = 0;
@@ -548,29 +587,15 @@ export default {
             let entities = this.viewer.entities.getById(id);
             if (entities) this.viewer.entities.remove(entities);
         },
-        ws(){
-            if ("WebSocket" in window)
-            {
-               // 打开一个 web socket
-               var ws = new WebSocket("ws://localhost:8080/ws");
-               ws.onopen = function()
-               {
-                  // Web Socket 已连接上，使用 send() 方法发送数据
-                  ws.send("发送数据");
-               };
-                
-               ws.onmessage = function (evt) 
-               { 
-                  var received_msg = evt.data;
-                  console.log("接收数据：" + received_msg)
-               };
-                
-               ws.onclose = function()
-               { 
-                  // 关闭 websocket
-                  alert("连接已关闭..."); 
-               };
+        test(){
+            let param={
+                code: 'G00101A1K0911050'
             }
+            testApi(param).then((res)=>{
+                console.log(res);
+            }).catch((err)=>{
+                console.log(err);
+            })
         }
     }
 }

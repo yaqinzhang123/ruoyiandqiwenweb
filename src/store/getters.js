@@ -36,6 +36,7 @@ const getters = {
   gridSize: (state) => state.fileList.gridSize,
   // 剩余存储空间
   remainderStorageValue: (state) =>
-    state.sideMenu.totalStorageValue - state.sideMenu.storageValue
+    state.sideMenu.totalStorageValue - state.sideMenu.storageValue,
+    webSocketMsg: state => state.user.webSocketMsg
 }
 export default getters

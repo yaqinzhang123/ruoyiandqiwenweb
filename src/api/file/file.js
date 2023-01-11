@@ -324,3 +324,11 @@ export function modifyFileContent(params) {
 	  params
 	})
 }
+// 测试接口
+export function testApi(params) {
+	return request({
+	  url: '/railway/selectByMainCode',
+	  method: 'GET',
+	  params
+	})
+}
