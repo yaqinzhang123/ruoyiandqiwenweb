@@ -101,7 +101,7 @@ export default {
 			this.loading = true
 			getFoldTree().then((res) => {
 				this.loading = false
-				if (res.success) {
+				if (res.code==200) {
 					this.fileTree = [res.data]
 					this.defaultExpandedKeys = id ? [id] : [this.fileTree[0].id]
 				} else {
@@ -155,7 +155,7 @@ export default {
 			}
 			unzipFile(reqData).then((res) => {
 				this.sureBtnLoading = false
-				if (res.success) {
+				if (res.code==200) {
 					this.$message.success('解压成功')
 					this.visible = false
 					this.callback('confirm')

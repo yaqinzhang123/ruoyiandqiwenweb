@@ -117,14 +117,10 @@ export default {
 					})
 						.then((res) => {
 							this.sureBtnLoading = false
-							if (res.success) {
-								this.$message.success('文件夹创建成功')
-								this.$refs[formName].resetFields()
-								this.visible = false
-								this.callback('confirm')
-							} else {
-								this.$message.warning(res.message)
-							}
+							this.$message.success('文件夹创建成功')
+							this.$refs[formName].resetFields()
+							this.visible = false
+							this.callback('confirm')							
 						})
 						.catch(() => {
 							this.sureBtnLoading = false

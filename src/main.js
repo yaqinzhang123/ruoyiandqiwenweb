@@ -51,7 +51,7 @@ import fileOperationPlugins from '@/plugins/fileOperationPlugins.js'
  */
 import uploader from 'vue-simple-uploader'
 
-
+// app.config.globalProperties.window = window
 // 全局方法挂载
 Vue.prototype.getDicts = getDicts
 Vue.prototype.getConfigKey = getConfigKey
@@ -80,6 +80,7 @@ Vue.component('ImageUpload', ImageUpload)
 Vue.component('ImagePreview', ImagePreview)
 
 Vue.use(uploader)
+// Vue.use(ThreeDxf)
 Vue.use(directive)
 Vue.use(plugins)
 Vue.use(VueMeta)

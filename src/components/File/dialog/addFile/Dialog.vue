@@ -82,14 +82,15 @@ export default {
 						fileName: this.form.fileName
 					})
 						.then((res) => {
+							console.log(res);
 							this.sureBtnLoading = false
-							if (res.success && res.code === 0) {
+							if (res.code==200) {
 								this.$message.success('文件创建成功')
 								this.$refs[formName].resetFields()
 								this.visible = false
 								this.callback('confirm')
 							} else {
-								this.$message.warning(res.message)
+								this.$message.warning(res.msg)
 							}
 						})
 						.catch(() => {

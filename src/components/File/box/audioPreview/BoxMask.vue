@@ -352,7 +352,7 @@ export default {
 			getFileDetail({ userFileId: this.activeFileObj.userFileId })
 				.then((res) => {
 					this.loading = false
-					if (res.success) {
+					if (res.code==200) {
 						this.audioInfo = {
 							...res.data.music,
 							duration: res.data.music.trackLength

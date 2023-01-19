@@ -219,7 +219,7 @@ export default {
 				pageCount: this.pageData.pageCount
 			}
 			getFileListByPath(data).then((res) => {
-				if (res.success) {
+				if (res.code==200) {
 					this.fileList = res.data.list
 					this.pageData.total = Number(res.data.total)
 					this.loading = false
@@ -247,7 +247,7 @@ export default {
 		 */
 		showFileRecovery() {
 			getRecoveryFile().then((res) => {
-				if (res.success) {
+				if (res.code==200) {
 					this.fileList = res.data
 					this.loading = false
 				} else {
@@ -266,7 +266,7 @@ export default {
 				pageCount: this.pageData.pageCount
 			}
 			getMyShareFileList(data).then((res) => {
-				if (res.success) {
+				if (res.code==200) {
 					this.fileList = res.data.list
 					this.pageData.total = Number(res.data.total)
 					this.loading = false
@@ -286,7 +286,7 @@ export default {
 				pageCount: this.pageData.pageCount
 			}
 			getFileListByType(data).then((res) => {
-				if (res.success) {
+				if (res.code==200) {
 					this.fileList = res.data.list
 					this.pageData.total = Number(res.data.total)
 					this.loading = false
@@ -308,7 +308,7 @@ export default {
 				fileName: fileName
 			}).then((res) => {
 				this.loading = false
-				if (res.success) {
+				if (res.code==200) {
 					this.fileList = res.data.map((item) => {
 						return {
 							...item,

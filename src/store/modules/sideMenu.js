@@ -24,7 +24,7 @@ export default {
 		 */
 		showStorage(context) {
 			return getStorage().then((res) => {
-				if (res.success) {
+				if (res.code==200) {
 					context.commit(
 						'setStorageValue',
 						res.data

@@ -92,14 +92,14 @@ export default {
 					}
 				}
 			}
-			if (res.success) {
+			if (res.code==200) {
 				this.sureBtnLoading = false
 				this.$message.success('删除成功')
 				this.visible = false
 				this.callback('confirm')
 			} else {
 				this.sureBtnLoading = false
-				this.$message.error('删除失败，' + res.message)
+				this.$message.error('删除失败，' + res.msg)
 			}
 		}
 	}

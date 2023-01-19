@@ -34,7 +34,7 @@ export default {
 				deleteBatchNum: this.deleteBatchNum,
 				filePath: this.filePath
 			}).then((res) => {
-				if (res.success) {
+				if (res.code==200) {
 					this.$message.success('文件已还原')
 					this.visible = false
 					this.callback('confirm')

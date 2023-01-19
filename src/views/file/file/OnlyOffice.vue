@@ -1,5 +1,5 @@
 <template>
-	<div class="report-onlyoffice">
+	<div class="app-container report-onlyoffice">
 		<div id="placeholder"></div>
 	</div>
 </template>
@@ -64,6 +64,7 @@ export default {
 				memo: this.fileInfo.memo
 			}
 			createOfficeFile(data).then((res) => {
+				console.log(res);
 				if (res.code === 200) {
 					let config = {
 						...res.data.file,

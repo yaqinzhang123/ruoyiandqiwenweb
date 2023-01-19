@@ -6,7 +6,8 @@ import {
 	fileImgMap,
 	unknownImg,
 	fileSuffixCodeModeMap,
-	markdownFileType
+	markdownFileType,
+	dxfFileType
 } from '@/libs/map.js'
 import { officeFileType } from '@/libs/map.js'
 import common from './common.js'
@@ -383,6 +384,13 @@ const fileFunction = {
 				(row.isDir === 0 && row.extendName === '')
 			) {
 				Vue.prototype.$openBox.codePreview({ fileInfo: row, isEdit: false })
+				return false
+			}
+			// dxf文件
+			if (
+				dxfFileType.includes(row.extendName.toLowerCase())
+			) {
+				Vue.prototype.$openBox.dxfPreview({ fileInfo: row, isEdit: false })
 				return false
 			}
 			//  若当前点击项是 markdown 文档

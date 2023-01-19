@@ -180,7 +180,8 @@ import router from '@/router/index.js'
 import {
 	officeFileType,
 	fileSuffixCodeModeMap,
-	markdownFileType
+	markdownFileType,
+	dxfFileType
 } from '@/libs/map.js'
 
 export default {
@@ -190,6 +191,7 @@ export default {
 			officeFileType,
 			fileSuffixCodeModeMap,
 			markdownFileType,
+			dxfFileType,
 			visible: false, //  右键菜单是否显示
 			sortedFileList: [], //  排序后的表格数据
 			// 右键菜单
@@ -289,7 +291,8 @@ export default {
 				![6, 8].includes(this.fileType) &&
 				(this.officeFileType.includes(this.selectedFile.extendName) ||
 					this.markdownFileType.includes(this.selectedFile.extendName) ||
-					this.fileSuffixCodeModeMap.has(this.selectedFile.extendName)) &&
+					this.fileSuffixCodeModeMap.has(this.selectedFile.extendName) ||
+					this.dxfFileType.includes(this.selectedFile.extendName)) &&
 				!['Share'].includes(this.routeName)
 			)
 		},
@@ -513,6 +516,12 @@ export default {
 			} else if (this.markdownFileType.includes(fileInfo.extendName)) {
 				// markdown 编辑浮层
 				this.$openBox.markdownPreview({
+					fileInfo: fileInfo,
+					editable: true
+				})
+			} else if (this.dxfFileType.includes(fileInfo.extendName)) {
+				// dxf 编辑浮层
+				this.$openBox.dxfPreview({
 					fileInfo: fileInfo,
 					editable: true
 				})

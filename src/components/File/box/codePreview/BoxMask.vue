@@ -129,6 +129,7 @@ import 'codemirror/lib/codemirror.css' // codemirror 样式
 import './theme.js' //  codemirror 高亮代码主题
 import './mode.js' // codemirror 的解析语言模式
 import './fold.js' //  codemirror 的代码折叠功能相关
+import { getToken } from '@/utils/auth'
 import {
 	fontSizeList,
 	fileSuffixCodeModeMap,
@@ -237,8 +238,9 @@ export default {
 				isMin: false,
 				shareBatchNum: this.fileInfo.shareBatchNum,
 				extractionCode: this.fileInfo.extractionCode,
-				token: this.$common.getCookies(this.$config.tokenKeyName)
+				token: getToken()
 			}).then((res) => {
+				console.log(res);
 				this.codeMirrorLoading = false
 				this.originalCodeText =
 					typeof res === 'object' ? JSON.stringify(res) : res
@@ -260,7 +262,7 @@ export default {
 			})
 				.then((res) => {
 					this.codeMirrorLoading = false
-					if (res.success) {
+					if (res.code==200) {
 						this.$message.success('已保存')
 						this.getCodeText()
 					} else {

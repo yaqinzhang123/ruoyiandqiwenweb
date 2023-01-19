@@ -87,7 +87,31 @@ export const constantRoutes = [
         meta: { title: '个人中心', icon: 'user' }
       }
     ]
-  }
+  },
+  // {
+  //   path: '/share/:shareBatchNum',
+  //   name: 'Share',
+  //   component: () => import('@/views/file/file/share.vue'),
+  //   meta: {
+  //     title: '分享',
+  //     content: {
+  //       description: '查看他人分享'
+  //     }
+  //   },
+  //   props: true
+  // },
+  // 	{
+	// 		path: '/onlyoffice',
+	// 		name: 'Onlyoffice',
+	// 		meta: {
+	// 			title: '在线编辑预览',
+	// 			content: {
+	// 				description: 'onlyoffice 文档在线编辑预览，支持 Word Excel PowerPoint'
+	// 			}
+	// 		},
+	// 		component: () =>
+	// 			import(/* webpackChunkName: "onlyOffice" */ '@/views/file/file/OnlyOffice.vue')
+	// 	},
 ]
 
 // 动态路由，基于用户权限动态去加载

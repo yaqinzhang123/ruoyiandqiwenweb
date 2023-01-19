@@ -90,7 +90,7 @@ export default {
 					})
 						.then((res) => {
 							this.sureBtnLoading = false
-							if (res.success) {
+							if (res.code==200) {
 								this.$message.success('重命名成功')
 								this.$refs[formName].resetFields()
 								this.visible = false

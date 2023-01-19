@@ -26,6 +26,7 @@ service.interceptors.request.use(config => {
   const isToken = (config.headers || {}).isToken === false
   // 是否需要防止数据重复提交
   const isRepeatSubmit = (config.headers || {}).repeatSubmit === false
+  
   if (getToken() && !isToken) {
     config.headers['Authorization'] = 'Bearer ' + getToken() // 让每个请求携带自定义token 请根据实际情况自行修改
   }
@@ -88,8 +89,12 @@ service.interceptors.response.use(res => {
       });
     }
       return Promise.reject('无效的会话，或者会话已过期，请重新登录。')
-    } else if (code === 500) {
+  }else if (code === 500) {
+    if(msg.indexOf('Duplicate entry')>-1){
+      Message({ message: '存在重复条目！', type: 'error' })
+    }else{
       Message({ message: msg, type: 'error' })
+    }
       return Promise.reject(new Error(msg))
     } else if (code === 601) {
       Message({ message: msg, type: 'warning' })

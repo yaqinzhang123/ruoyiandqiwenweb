@@ -7,13 +7,14 @@
         <Configuration name="configuration" :data="data" :show="show" @output="output" />
        
         <el-button @click="sending()">sending</el-button>
+        <el-button @click="getListApi()">getListApi</el-button>
     </div>
 
 </template>
 <script>
 import * as echarts from 'echarts'
 import { getData, routeToWgs, wgsToRoute } from '@/api/wavecharts/wavechart'
-import { testApi} from '@/api/file/file'
+import { testApi,getListApi} from '@/api/file/file'
 import Configuration from './configuration/configuration'
 import { FloatDiv, FloatSub } from '@/utils/floatMath.js'
 import { initWebSocket, sendSock, webSocketClose } from '@/utils/websocket1.js'
@@ -517,7 +518,7 @@ export default {
                 route: route
             }
             routeToWgs(param).then((res) => {
-                if (res.success && res.result && res.result.longitude) {
+                if (res.code==200 && res.result && res.result.longitude) {
                     let point = {
                         longitude: res.result.longitude,
                         latitude: res.result.latitude,
@@ -550,7 +551,7 @@ export default {
                 longitude: longitude
             }
             wgsToRoute(param).then((res) => {
-                if (res.success && res.result && res.result > 0.0) {
+                if (res.code==200 && res.result && res.result > 0.0) {
                     this.ChangeOptions(res.result);
 
                 }
@@ -592,6 +593,16 @@ export default {
                 code: 'G00101A1K0911050'
             }
             testApi(param).then((res)=>{
+                console.log(res);
+            }).catch((err)=>{
+                console.log(err);
+            })
+        },
+        getListApi(){
+            let param={
+                type: 'gangGui'
+            }
+            getListApi(param).then((res)=>{
                 console.log(res);
             }).catch((err)=>{
                 console.log(err);

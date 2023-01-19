@@ -65,6 +65,7 @@ import '/public/mavonEditor/css/tomorrow-night.css'
 import '/public/mavonEditor/css/github-markdown.css'
 import store from '@/store/index.js'
 import { getFilePreview, modifyFileContent } from '@/api/file/file.js'
+import { getToken } from '@/utils/auth'
 
 export default {
 	name: 'ImgPreview',
@@ -195,7 +196,7 @@ export default {
 				isMin: false,
 				shareBatchNum: this.fileInfo.shareBatchNum,
 				extractionCode: this.fileInfo.extractionCode,
-				token: this.$common.getCookies(this.$config.tokenKeyName)
+				token: getToken()
 			}).then((res) => {
 				this.markdownLoading = false
 				this.originalMarkdownText = res
@@ -214,7 +215,7 @@ export default {
 			})
 				.then((res) => {
 					this.markdownLoading = false
-					if (res.success) {
+					if (res.code==200) {
 						this.$message.success('已保存')
 						this.getMarkdownText()
 					} else {

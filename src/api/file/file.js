@@ -112,11 +112,11 @@ export function getFileListByType(params) {
 	})
 }
 // 获取回收站文件列表
-export function getRecoveryFile(params) {
+export function getRecoveryFile(data) {
 	return request({
 	  url: '/recoveryfile/list',
 	  method: 'post',
-	  params
+	  data
 	})
 }
 // 获取我已分享的文件列表
@@ -147,11 +147,11 @@ export function getFoldTree(params) {
  * 单文件操作相关接口
  */
 // 创建文件
-export function createFold(params) {
+export function createFold(data) {
 	return request({
 	  url: '/file/createfile',
 	  method: 'post',
-	  params
+	  data
 	})
 }
 // 获取文件详细信息
@@ -163,43 +163,43 @@ export function getFileDetail(params) {
 	})
 }
 // 删除文件
-export function deleteFile(params) {
+export function deleteFile(data) {
 	return request({
 	  url: '/file/deletefile',
 	  method: 'post',
-	  params
+	  data
 	})
 }
 // 复制文件
-export function copyFile(params) {
+export function copyFile(data) {
 	return request({
-	  url: '/file/copyFile',
+	  url: '/file/copyfile',
 	  method: 'post',
-	  params
+	  data
 	})
 }
 // 移动文件
-export function moveFile(params) {
+export function moveFile(data) {
 	return request({
-	  url: '/file/moveFile',
+	  url: '/file/movefile',
 	  method: 'post',
-	  params
+	  data
 	})
 }
 // 重命名文件
-export function renamefile(params) {
+export function renameFile(data) {
 	return request({
 	  url: '/file/renamefile',
 	  method: 'post',
-	  params
+	  data
 	})
 }
 // 解压文件
-export function unzipFile(params) {
+export function unzipFile(data) {
 	return request({
 	  url: '/file/unzipFile',
 	  method: 'post',
-	  params
+	  data
 	})
 }
 // 全局搜索文件
@@ -211,11 +211,11 @@ export function searchFile(params) {
 	})
 }
 // 分享文件
-export function shareFile(params) {
+export function shareFile(data) {
 	return request({
-	  url: '/share/shareFile',
+	  url: '/share/sharefile',
 	  method: 'post',
-	  params
+	  data
 	})
 }
 // 校验分享链接过期时间
@@ -251,30 +251,30 @@ export function getShareFileList(params) {
 	})
 }
 // 保存分享文件
-export function saveShareFile(params) {
+export function saveShareFile(data) {
 	return request({
 	  url: '/share/savesharefile',
 	  method: 'post',
-	  params
+	  data
 	})
 }
 /**
  * 文件批量操作相关接口
  */
 // 批量删除文件
-export function batchDeleteFile(params) {
+export function batchDeleteFile(data) {
 	return request({
-	  url: '/file/batchDeleteFile',
+	  url: '/file/batchdeletefile',
 	  method: 'post',
-	  params
+	  data
 	})
 }
 // 批量移动文件
-export function batchMoveFile(params) {
+export function batchMoveFile(data) {
 	return request({
 	  url: '/file/batchmovefile',
 	  method: 'post',
-	  params
+	  data
 	})
 }
 
@@ -282,27 +282,27 @@ export function batchMoveFile(params) {
  * 回收站文件操作相关接口
  */
 // 回收站文件删除
-export function deleteRecoveryFile(params) {
+export function deleteRecoveryFile(data) {
 	return request({
 	  url: '/recoveryfile/deleterecoveryfile',
 	  method: 'post',
-	  params
+	  data
 	})
 }
 // 回收站文件还原
-export function restoreRecoveryFile(params) {
+export function restoreRecoveryFile(data) {
 	return request({
 	  url: '/recoveryfile/restorefile',
 	  method: 'post',
-	  params
+	  data
 	})
 }
 // 回收站文件批量删除
-export function batchDeleteRecoveryFile(params) {
+export function batchDeleteRecoveryFile(data) {
 	return request({
 	  url: '/recoveryfile/batchdelete',
 	  method: 'post',
-	  params
+	  data
 	})
 }
 /**
@@ -317,17 +317,25 @@ export function getFilePreview(params) {
 	})
 }
 // 文件修改
-export function modifyFileContent(params) {
+export function modifyFileContent(data) {
 	return request({
 	  url: '/file/update',
 	  method: 'post',
-	  params
+	  data
 	})
 }
 // 测试接口
 export function testApi(params) {
 	return request({
 	  url: '/railway/selectByMainCode',
+	  method: 'GET',
+	  params
+	})
+}
+// 所有数据
+export function getListApi(params) {
+	return request({
+	  url: '/railway/getList',
 	  method: 'GET',
 	  params
 	})

@@ -117,6 +117,7 @@
 <script>
 import store from '@/store/index.js'
 import SparkMD5 from 'spark-md5'
+import { getToken } from '@/utils/auth'
 
 export default {
 	data() {
@@ -131,27 +132,27 @@ export default {
 				// 服务器分片校验函数，秒传及断点续传基础
 				checkChunkUploadedByResponse: function (chunk, message) {
 					let objMessage = JSON.parse(message)
-					if (objMessage.success) {
+					if (objMessage.code==200) {
 						let data = objMessage.data
-						if (data.skipUpload) {
+						if (data.skipUpload) { 
 							// 分片已存在于服务器中
 							return true
 						}
 						return (data.uploaded || []).indexOf(chunk.offset + 1) >= 0
 					} else {
-						console.log(objMessage.message)
+						console.log(objMessage)
 						return true
 					}
 				},
 				headers: {
-					token: this.$common.getCookies(this.$config.tokenKeyName)
+					'Authorization': "Bearer " +getToken()
 				},
 				query() {}
 			},
 			// 文件状态文案映射
 			fileStatusText: {
 				success: '上传成功',
-				error: 'error',
+				error: '上传失败',
 				uploading: '上传中',
 				paused: '暂停中',
 				waiting: '等待中'
@@ -186,9 +187,7 @@ export default {
 		 * 上传组件预处理
 		 */
 		handlePrepareUpload() {
-			this.options.headers.token = this.$common.getCookies(
-				this.$config.tokenKeyName
-			)
+			this.options.headers.Authorization = 'Bearer '+getToken()
 			switch (this.uploadWay) {
 				case 1: {
 					this.$refs.uploadBtn.$el.click()
@@ -259,6 +258,7 @@ export default {
 		 * @param {object} files 批量文件信息
 		 */
 		handleFilesAdded(files) {
+			console.log(files);
 			// 批量选择的文件的总体大小
 			const filesTotalSize = files
 				.map((item) => item.size)
@@ -295,9 +295,9 @@ export default {
 				this.callback(false)
 				return
 			}
-
+			console.log(response);
 			let result = JSON.parse(response)
-			if (result.success) {
+			if (result.code==200) {
 				file.statusStr = ''
 				if (this.filesLength === 1) {
 					// 本次所有的文件均已上传完毕
@@ -312,7 +312,7 @@ export default {
 					this.callback(true)
 				}
 			} else {
-				this.$message.error(result.message)
+				this.$message.error(result.msg)
 				file.statusStr = '上传失败'
 			}
 			this.filesLength--

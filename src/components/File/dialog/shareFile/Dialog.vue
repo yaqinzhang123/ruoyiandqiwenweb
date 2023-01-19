@@ -192,7 +192,7 @@ export default {
 					})
 						.then((res) => {
 							this.sureBtnLoading = false
-							if (res.success) {
+							if (res.code==200) {
 								this.shareData = res.data
 								this.shareIsSuccess = true
 								this.callback('confirm')
