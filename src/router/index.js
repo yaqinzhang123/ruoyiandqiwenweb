@@ -100,18 +100,18 @@ export const constantRoutes = [
   //   },
   //   props: true
   // },
-  // 	{
-	// 		path: '/onlyoffice',
-	// 		name: 'Onlyoffice',
-	// 		meta: {
-	// 			title: '在线编辑预览',
-	// 			content: {
-	// 				description: 'onlyoffice 文档在线编辑预览，支持 Word Excel PowerPoint'
-	// 			}
-	// 		},
-	// 		component: () =>
-	// 			import(/* webpackChunkName: "onlyOffice" */ '@/views/file/file/OnlyOffice.vue')
-	// 	},
+  	{
+			path: '/onlyoffice',
+			name: 'Onlyoffice',
+			meta: {
+				title: '在线编辑预览',
+				content: {
+					description: 'onlyoffice 文档在线编辑预览，支持 Word Excel PowerPoint'
+				}
+			},
+			component: () =>
+				import(/* webpackChunkName: "onlyOffice" */ '@/views/file/file/OnlyOffice.vue')
+		},
 ]
 
 // 动态路由，基于用户权限动态去加载
