@@ -247,11 +247,9 @@ export function Viewer(data, parent, width, height,callback) {
     // Uncommend this to disable rotation (does not make much sense with 2D drawings).
     //controls.enableRotate = false;
 
-    console.log(renderer);
     controls.addEventListener('change', ()=>{
         renderer.render( scene, camera );
     });
-    console.log(controls);
     renderer.render(scene, camera);
     controls.update();
 

@@ -137,20 +137,7 @@ export default {
       }).then((res) => {
         this.createFileform(res);
       })
-    },
-    closedxfPreview() {
-      this.visible = false
-      this.callback('cancel')
-    },
-    loadScript(url, callback) {
-      var script = document.createElement("script");
-      script.type = "text/javascript";
-      script.onload = function () {
-        callback && callback();
-      };
-      script.src = url;
-      document.head.appendChild(script);
-    },
+    },   
     createFileform(res) {
       var parser = new DxfParser();
       var dxf = parser.parseSync(res);
@@ -161,9 +148,12 @@ export default {
      
     },
     LoadingClose(){
-      console.log(111);
       this.dxfLoading=false
-    }
+    },
+    closedxfPreview() {
+      this.visible = false
+      this.callback('cancel')
+    },
   }
 }
 </script>
