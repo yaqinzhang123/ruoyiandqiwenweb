@@ -35,7 +35,7 @@ export default {
   },
   data() {
     return {
-      title: '若依管理系统',
+      title: '全空间公共服务平台',
       logo: logoImg
     }
   }
