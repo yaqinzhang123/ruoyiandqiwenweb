@@ -82,7 +82,6 @@ export default {
 						fileName: this.form.fileName
 					})
 						.then((res) => {
-							console.log(res);
 							this.sureBtnLoading = false
 							if (res.code==200) {
 								this.$message.success('文件创建成功')

@@ -64,7 +64,7 @@ export default {
 				memo: this.fileInfo.memo
 			}
 			createOfficeFile(data).then((res) => {
-				console.log(res);
+				// console.log(res);
 				if (res.code === 200) {
 					let config = {
 						...res.data.file,
@@ -115,7 +115,7 @@ export default {
 							this.platform = 'mobile'
 						}
 					} catch (e) {
-						console.log(e)
+						// console.log(e)
 					}
 				}
 			}

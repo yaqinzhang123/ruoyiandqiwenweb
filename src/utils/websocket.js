@@ -26,7 +26,7 @@ let sendMsg = (data, callback) => { //发送数据,接收数据
         socket.send(data);
     } else {
         setTimeout(() => {
-            console.log(socket, '等待socket链接成功')
+            // console.log(socket, '等待socket链接成功')
             sendMsg(data, callback)
         }, 1500)
         return false
@@ -37,7 +37,7 @@ let sendMsg = (data, callback) => { //发送数据,接收数据
 }
 let initSocket = () => { //初始化websocket
     socket.onopen = () => {
-        console.log('socket连接成功')
+        // console.log('socket连接成功')
         //heartCheck.reset().start() //后端说暂时不需要做心跳检测
 
         if (isReconnet) {//执行全局回调函数
@@ -48,17 +48,17 @@ let initSocket = () => { //初始化websocket
     }
 
     socket.onmessage = (ev) => {
-        console.log(ev, '连接正常')
+        // console.log(ev, '连接正常')
         //heartCheck.reset().start() //后端说暂时不需要做心跳检测
     }
 
     socket.onerror = () => {
-        console.log('websocket服务出错了---onerror');
+        // console.log('websocket服务出错了---onerror');
         reconnet(wsUrl)
     }
 
     socket.onclose = () => {
-        console.log('websocket服务关闭了+++onclose');
+        // console.log('websocket服务关闭了+++onclose');
         reconnet(wsUrl)
     }
 }

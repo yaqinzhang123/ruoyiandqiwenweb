@@ -8,7 +8,7 @@ export const options = {
        * 字典请求，方法签名为function(dictMeta: DictMeta): Promise
        */
       request: (dictMeta) => {
-        console.log(`load dict ${dictMeta.type}`)
+        // console.log(`load dict ${dictMeta.type}`)
         return Promise.resolve([])
       },
       /**

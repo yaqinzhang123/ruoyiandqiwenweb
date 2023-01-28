@@ -109,6 +109,7 @@ export const constantRoutes = [
 					description: 'onlyoffice 文档在线编辑预览，支持 Word Excel PowerPoint'
 				}
 			},
+      hidden: true,
 			component: () =>
 				import(/* webpackChunkName: "onlyOffice" */ '@/views/file/file/OnlyOffice.vue')
 		},

@@ -27,6 +27,8 @@ export const fileImgMap = new Map([
 	['sass', require('@/assets/images/file/file_sass.png')],
 	['csv', require('@/assets/images/file/file_csv.png')],
 	['dmg', require('@/assets/images/file/file_dmg.png')],
+	['dwg', require('@/assets/images/file/file_dwg.png')],
+	['dxf', require('@/assets/images/file/file_dxf.png')],
 	['dir', require('@/assets/images/file/dir.png')],
 	['doc', require('@/assets/images/file/file_word.svg')],
 	['docx', require('@/assets/images/file/file_word.svg')],

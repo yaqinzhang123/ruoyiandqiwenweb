@@ -240,7 +240,6 @@ export default {
 				extractionCode: this.fileInfo.extractionCode,
 				token: getToken()
 			}).then((res) => {
-				console.log(res);
 				this.codeMirrorLoading = false
 				this.originalCodeText =
 					typeof res === 'object' ? JSON.stringify(res) : res

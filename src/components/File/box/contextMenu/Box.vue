@@ -307,7 +307,7 @@ export default {
 		// 上传文件组件参数
 		uploadFileParams() {
 			return {
-				filePath: this.filePath,
+				filePath: this.filePath?this.filePath:"/",
 				isDir: 0
 			}
 		}

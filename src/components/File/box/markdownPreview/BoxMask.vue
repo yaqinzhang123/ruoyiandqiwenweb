@@ -201,7 +201,6 @@ export default {
 				this.markdownLoading = false
 				this.originalMarkdownText = res
 				this.markdownText = res
-				console.log(res);
 			})
 		},
 		/**

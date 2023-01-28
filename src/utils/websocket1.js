@@ -24,13 +24,13 @@ export function initWebSocket (url) {
   };
   //连接发生错误的回调方法
   webSocket.onerror = function () {
-    console.log("WebSocket连接发生错误");
+    // console.log("WebSocket连接发生错误");
   };
 }
 
 //连接socket建立时触发
 export function webSocketOpen () {
-  console.log("WebSocket连接成功");
+  // console.log("WebSocket连接成功");
 }
 
 //客户端接收服务端数据时触发,e为接受的数据对象
@@ -41,7 +41,7 @@ export function webSocketOnMessage (e) {
 
 //发送数据
 export function webSocketSend (data) {
-  console.log('发送数据');
+  // console.log('发送数据');
   //在这里根据后端需要来转换数据格式
   webSocket.send(JSON.stringify(data));
 }
@@ -49,7 +49,7 @@ export function webSocketSend (data) {
 //关闭socket
 export function webSocketClose () {
   webSocket.close()
-  console.log("对话连接已关闭");
+  // console.log("对话连接已关闭");
   // }
 }
 
@@ -62,25 +62,25 @@ export function sendSock (agentData, callback) {
     //CONNECTING：值为0，表示正在连接。
     case webSocket.CONNECTING:
       setTimeout(function () {
-        console.log('正在连接。。。');
+        // console.log('正在连接。。。');
         webSocketSend(agentData, callback);
       }, 1000);
       break;
     //OPEN：值为1，表示连接成功，可以通信了。
     case webSocket.OPEN:
-      console.log('连接成功');
+      // console.log('连接成功');
       webSocketSend(agentData);
       break;
     //CLOSING：值为2，表示连接正在关闭。
     case webSocket.CLOSING:
       setTimeout(function () {
-        console.log('连接关闭中');
+        // console.log('连接关闭中');
         webSocketSend(agentData, callback);
       }, 1000);
       break;
     //CLOSED：值为3，表示连接已经关闭，或者打开连接失败。
     case webSocket.CLOSED:
-      console.log('连接关闭/打开失败');
+      // console.log('连接关闭/打开失败');
       // do something
       break;
     default:

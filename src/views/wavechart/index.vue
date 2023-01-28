@@ -95,13 +95,13 @@ export default {
       },
     },},
     beforeDestroy(){
-        console.log("beforeDestroy");
+        // console.log("beforeDestroy");
         this.handleClose()
     },
     methods: {
         
         getConfigResult(val) { 
-            console.log(val);
+            // console.log(val);
         }, 
         sending() {
       sendSock('发送的信息')
@@ -455,7 +455,7 @@ export default {
         },
         handleMousedown(params) {
             //通过获取鼠标点击事件，获取到值
-            console.log(params);
+            // console.log(params);
         },
         getCatesian3FromPX(px) {
             if (this.viewer && px) {
@@ -541,7 +541,7 @@ export default {
                     this.DrawPoint('routeposition', Cesium.Cartesian3.fromDegrees(point.longitude, point.latitude, point.height));
                 }
             }).catch((err) => {
-                console.log(err);
+                // console.log(err);
             });
         },
         getRoute(latitude, longitude) {
@@ -593,9 +593,9 @@ export default {
                 code: 'G00101A1K0911050'
             }
             testApi(param).then((res)=>{
-                console.log(res);
+                // console.log(res);
             }).catch((err)=>{
-                console.log(err);
+                // console.log(err);
             })
         },
         getListApi(){
@@ -603,9 +603,9 @@ export default {
                 type: 'gangGui'
             }
             getListApi(param).then((res)=>{
-                console.log(res);
+                // console.log(res);
             }).catch((err)=>{
-                console.log(err);
+                // console.log(err);
             })
         }
     }

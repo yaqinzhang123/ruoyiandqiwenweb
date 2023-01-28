@@ -140,7 +140,6 @@ export default {
 						}
 						return (data.uploaded || []).indexOf(chunk.offset + 1) >= 0
 					} else {
-						console.log(objMessage)
 						return true
 					}
 				},
@@ -258,7 +257,6 @@ export default {
 		 * @param {object} files 批量文件信息
 		 */
 		handleFilesAdded(files) {
-			console.log(files);
 			// 批量选择的文件的总体大小
 			const filesTotalSize = files
 				.map((item) => item.size)
@@ -295,7 +293,6 @@ export default {
 				this.callback(false)
 				return
 			}
-			console.log(response);
 			let result = JSON.parse(response)
 			if (result.code==200) {
 				file.statusStr = ''
