@@ -754,7 +754,7 @@ export default {
       .progress-bar {
         margin-right: 16px;
         flex: 1;
-        >>> .el-slider__runway {
+        ::v-deep .el-slider__runway {
           height: 2px;
           .el-slider__button-wrapper {
             top: -17px;
@@ -800,7 +800,7 @@ export default {
       }
       .volume-bar {
         width: 100px;
-        >>> .el-slider__runway {
+        ::v-deep .el-slider__runway {
           height: 2px;
           .el-slider__button-wrapper {
             top: -19px;

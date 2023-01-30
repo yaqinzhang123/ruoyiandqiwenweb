@@ -124,7 +124,7 @@ export default {
 		return {
 			// 上传组件配置项
 			options: {
-				target: `${this.$config.baseContext}/filetransfer/uploadfile`, // 上传文件-目标 URL
+				target: `${process.env.VUE_APP_BASE_API}/filetransfer/uploadfile`, // 上传文件-目标 URL
 				chunkSize: 1024 * 1024, //  每个分片的大小
 				fileParameterName: 'file', //  上传文件时文件的参数名，默认 file
 				maxChunkRetries: 3, //  并发上传数，默认 3
@@ -518,7 +518,7 @@ export default {
         flex: 1;
         text-align: right;
 
-        >>> .el-button--text {
+        ::v-deep .el-button--text {
           color: $PrimaryText;
 
           i[class^=el-icon-] {
@@ -539,6 +539,7 @@ export default {
     }
 
     .file-list {
+	  padding: 0;
       position: relative;
       height: 240px;
       overflow-x: hidden;
@@ -552,7 +553,7 @@ export default {
         position: relative;
         background-color: #fff;
 
-        >>> .uploader-file {
+        ::v-deep .uploader-file {
           height: 40px;
           line-height: 40px;
 
@@ -585,7 +586,7 @@ export default {
           }
         }
 
-        >>> .uploader-file[status='success'] {
+        ::v-deep .uploader-file[status='success'] {
           .uploader-file-progress {
             border: none;
           }
@@ -593,7 +594,7 @@ export default {
       }
 
       .file-item.custom-status-item {
-        >>> .uploader-file-status {
+        ::v-deep .uploader-file-status {
           visibility: hidden;
         }
 

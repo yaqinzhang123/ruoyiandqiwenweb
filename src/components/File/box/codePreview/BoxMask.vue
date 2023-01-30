@@ -404,7 +404,7 @@ export default {
       .editor-set-form {
         flex: 1;
         text-align: right;
-        >>> .el-form-item {
+        ::v-deep .el-form-item {
           margin-bottom: 0;
           &.font-size {
             .el-form-item__content {

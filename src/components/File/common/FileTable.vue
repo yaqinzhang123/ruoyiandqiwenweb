@@ -378,7 +378,7 @@ export default {
   .file-type-0 {
     height: calc(100vh - 206px) !important;
 
-    >>> .el-table__body-wrapper {
+    ::v-deep .el-table__body-wrapper {
       height: calc(100vh - 262px) !important;
     }
   }
@@ -386,7 +386,7 @@ export default {
   .file-type-6 {
     height: calc(100vh - 211px) !important;
 
-    >>> .el-table__body-wrapper {
+    ::v-deep .el-table__body-wrapper {
       height: calc(100vh - 263px) !important;
     }
   }
@@ -394,7 +394,7 @@ export default {
   .file-table.share {
     height: calc(100vh - 109px) !important;
 
-    >>> .el-table__body-wrapper {
+    ::v-deep .el-table__body-wrapper {
       height: calc(100vh - 161px) !important;
     }
   }
@@ -403,7 +403,7 @@ export default {
     width: 100% !important;
     height: calc(100vh - 203px);
 
-    >>> .el-table__header-wrapper {
+    ::v-deep .el-table__header-wrapper {
       th {
         // background: $tabBackColor;
         padding: 4px 0;
@@ -421,7 +421,7 @@ export default {
       }
     }
 
-    >>> .el-table__body-wrapper {
+    ::v-deep .el-table__body-wrapper {
       height: calc(100vh - 255px);
       overflow-y: auto;
       @include setScrollbar(6px, transparent, #C0C4CC);

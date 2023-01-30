@@ -77,7 +77,7 @@ export default {
   color: $Primary;
 
   // 播放按钮
-  >>> .vjs-big-play-button {
+  ::v-deep .vjs-big-play-button {
     border-radius: 50%;
     border: 6px solid $Primary;
     left: calc(50% - 1em);
@@ -95,14 +95,14 @@ export default {
     }
   }
   // 改变各种“条”的颜色
-  >>> .vjs-volume-level,
-  >>> .vjs-play-progress,
-  >>> .vjs-slider-bar {
+  ::v-deep .vjs-volume-level,
+  ::v-deep .vjs-play-progress,
+  ::v-deep .vjs-slider-bar {
     background: $Primary;
   }
 
   // 控制条按钮的大小
-  >>> .vjs-control-bar {
+  ::v-deep .vjs-control-bar {
     font-size: 14px;
   }
 

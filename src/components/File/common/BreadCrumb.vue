@@ -168,7 +168,7 @@ export default {
   display: flex;
 
   .title,
-  >>> .el-breadcrumb {
+  ::v-deep .el-breadcrumb {
     // height: 30px;
     // line-height: 30px;
   }

@@ -481,7 +481,7 @@ export default {
   .create-operate-group {
     .upload-drop {
       float: left;
-      >>> .el-button {
+      ::v-deep .el-button {
         border-radius: 4px 0 0 4px;
       }
     }

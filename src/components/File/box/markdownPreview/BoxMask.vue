@@ -331,7 +331,7 @@ export default {
     }
   }
 
-  >>> .v-note-wrapper {
+  ::v-deep .v-note-wrapper {
 		box-shadow: none !important;
 		border: 1px solid $BorderBase;
 		.v-note-op {
@@ -358,7 +358,7 @@ export default {
 			}
 		}
 	}
-	>>> .v-note-wrapper:not(.fullscreen) {
+	::v-deep .v-note-wrapper:not(.fullscreen) {
     margin: 56px auto 0 auto;
     width: 90vw;
 		height: calc(100vh - 80px);

@@ -155,7 +155,7 @@ export default {
 @import '@/assets/styles/varibles.scss';
 @import '@/assets/styles/mixin.scss';
 
->>> .el-dialog {
+::v-deep .el-dialog {
   .el-dialog__header {
     display: flex;
   }

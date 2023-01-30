@@ -420,7 +420,7 @@ export default {
       width: 100px;
       display: flex;
 
-      >>> .el-input-number {
+      ::v-deep .el-input-number {
         width: 40px;
 
         .el-input-number__decrease, .el-input-number__increase {
@@ -567,7 +567,7 @@ export default {
       width: 600px;
       display: flex;
 
-      >>> .el-slider {
+      ::v-deep .el-slider {
         flex: 1;
 
         .el-slider__bar {

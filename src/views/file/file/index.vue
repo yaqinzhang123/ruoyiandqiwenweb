@@ -329,7 +329,7 @@ export default {
 @import '@/assets/styles/varibles.scss';
 
 .file-list-wrapper {
-  >>> .el-header {
+  ::v-deep .el-header {
     padding: 0;
   }
 

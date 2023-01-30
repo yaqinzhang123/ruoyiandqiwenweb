@@ -165,7 +165,7 @@ export default {
             font-size: 12px;
             word-break: break-all;
             @include setEllipsis(2);
-            >>> .keyword {
+            ::v-deep .keyword {
               color: $Danger;
             }
           }

@@ -27,7 +27,7 @@ import {
 	batchDeleteRecoveryFile,
 	deleteFile,
 	deleteRecoveryFile
-} from '@/api/file//file.js'
+} from '@/api/file/file.js'
 
 export default {
 	name: 'DeleteFileDialog',
