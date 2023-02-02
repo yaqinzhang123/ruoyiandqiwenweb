@@ -59,7 +59,7 @@ const fileFunction = {
 	 * @returns {string} 流式图片
 	 */
 	getMinImgStream(row) {
-		return `${config.baseContext}/filetransfer/preview?userFileId=${
+		return `${process.env.VUE_APP_BASE_API}/filetransfer/preview?userFileId=${
 			row.userFileId
 		}&isMin=true&shareBatchNum=${
 			row.shareBatchNum == null ? '' : row.shareBatchNum
@@ -71,7 +71,7 @@ const fileFunction = {
 	 * @returns {string} 文件路径
 	 */
 	getViewFilePath(row) {
-		return `${config.baseContext}/filetransfer/preview?userFileId=${
+		return `${process.env.VUE_APP_BASE_API}/filetransfer/preview?userFileId=${
 			row.userFileId
 		}&isMin=false&shareBatchNum=${
 			row.shareBatchNum == null ? '' : row.shareBatchNum
@@ -83,7 +83,7 @@ const fileFunction = {
 	 * @returns {string}  文件下载路径
 	 */
 	getDownloadFilePath(row) {
-		return `${config.baseContext}/filetransfer/downloadfile?userFileId=${
+		return `${process.env.VUE_APP_BASE_API}/filetransfer/downloadfile?userFileId=${
 			row.userFileId
 		}&shareBatchNum=${
 			row.shareBatchNum == null ? '' : row.shareBatchNum
@@ -95,7 +95,7 @@ const fileFunction = {
 	 * @returns {string} office 文件创建路径
 	 */
 	createFileOnlineByOffice(data) {
-		let fileUrl = `${location.protocol}//${location.host}${config.baseContext}`
+		let fileUrl = `${location.protocol}//${location.host}${process.env.VUE_APP_BASE_API}`
 		const { href } = router.resolve({
 			name: 'Onlyoffice',
 			query: {
@@ -122,7 +122,7 @@ const fileFunction = {
 		let extendName = row.extendName
 
 		fileUrl = `${location.protocol}//${location.host}${
-			config.baseContext
+			process.env.VUE_APP_BASE_API
 		}/filetransfer/preview?userFileId=${
 			row.userFileId
 		}&isMin=false&shareBatchNum=${row.shareBatchNum}&extractionCode=${
@@ -156,7 +156,7 @@ const fileFunction = {
 		let extendName = row.extendName
 
 		fileUrl = `${location.protocol}//${location.host}${
-			config.baseContext
+			process.env.VUE_APP_BASE_API
 		}/filetransfer/preview?userFileId=${
 			row.userFileId
 		}&isMin=false&shareBatchNum=${row.shareBatchNum}&extractionCode=${

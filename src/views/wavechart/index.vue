@@ -24,7 +24,7 @@ export default {
     components: { Configuration },
     data() {
         return {
-            pid: 1,// this.$store.state.pid,
+            pid: 13,// this.$store.state.pid,
             data: "",
             show: false,
             loading: false,
@@ -223,6 +223,7 @@ export default {
             this.keys.map((value, index) => {
                 this.offsets.push(index + 1)
             })
+            console.log(this.offsets);
         },
         getName(key) {
             let i = this.getIndex(key);
@@ -294,6 +295,7 @@ export default {
                         color: color,
                     },
                     symbol: "none",
+                    smooth: false
                 });
                 this.getOptions(this.series);
             } else {
@@ -339,11 +341,11 @@ export default {
                     },
                 },
                  grid: {
-        left: 30,
-        right: 100,
-        top: 60,
-        bottom: "5%",
-      },
+                    left: 30,
+                    right: 100,
+                    top: 60,
+                    bottom: "5%",
+                },
                 xAxis: {
                     type: "value",
                     axisTick: { show: false },
@@ -365,8 +367,8 @@ export default {
                         splitNumber: 7,
                     },
                     splitLine: {
-          show: true,
-        }
+                        show: true,
+                    }
                 },
                 toolbox: {
                     feature: {

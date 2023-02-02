@@ -88,18 +88,19 @@ export const constantRoutes = [
       }
     ]
   },
-  // {
-  //   path: '/share/:shareBatchNum',
-  //   name: 'Share',
-  //   component: () => import('@/views/file/file/share.vue'),
-  //   meta: {
-  //     title: '分享',
-  //     content: {
-  //       description: '查看他人分享'
-  //     }
-  //   },
-  //   props: true
-  // },
+  {
+    path: '/share/:shareBatchNum',
+    name: 'Share',
+    component: () => import('@/views/file/file/share.vue'),
+    meta: {
+      title: '分享',
+      content: {
+        description: '查看他人分享'
+      }
+    },
+    props: true,
+    hidden: true,
+  },
   	{
 			path: '/onlyoffice',
 			name: 'Onlyoffice',

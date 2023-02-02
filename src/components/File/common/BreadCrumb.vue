@@ -169,8 +169,8 @@ export default {
 
   .title,
   ::v-deep .el-breadcrumb {
-    // height: 30px;
-    // line-height: 30px;
+    height: 30px;
+    line-height: 30px;
   }
 
   .file-path-input {

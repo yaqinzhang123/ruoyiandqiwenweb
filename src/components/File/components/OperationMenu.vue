@@ -281,12 +281,12 @@ export default {
 		// 批量下载文件链接
 		batchDownloadLink() {
 			// console.log(`${
-			// 	this.$config.baseContext
+			// 	this.$process.env.VUE_APP_BASE_API
 			// }/filetransfer/batchDownloadFile?userFileIds=${this.selectedFiles
 			// 	.map((item) => item.userFileId)
 			// 	.join(',')}`);
 			return `${
-				this.$config.baseContext
+				process.env.VUE_APP_BASE_API
 			}/filetransfer/batchDownloadFile?userFileIds=${this.selectedFiles  
 				.map((item) => item.userFileId)
 				.join(',')}`
