@@ -127,13 +127,13 @@ export default {
 	watch: {
 		filePath() {
 			// 当左侧菜单选择“全部”或“我的分享”，文件路径发生变化时，再重新获取文件列表
-			if (this.$route.name === 'File' && [0, 8].includes(this.fileType)) {
+			if (this.$route.name === 'FileAll' && [0, 8].includes(this.fileType)) {
 				this.setPageCount()
 				this.getTableDataByType()
 			}
 		},
 		fileType() {
-			if (this.$route.name === 'File') {
+			if (this.$route.name === 'FileAll') {
 				this.setPageCount()
 				this.getTableDataByType()
 			}
