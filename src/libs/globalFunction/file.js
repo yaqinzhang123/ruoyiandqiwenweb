@@ -390,7 +390,7 @@ const fileFunction = {
 			if (
 				dxfFileType.includes(row.extendName.toLowerCase())
 			) {
-				Vue.prototype.$openBox.dxfPreview({ fileInfo: row, isEdit: false })
+				Vue.prototype.$openBox.dxfPreview({ fileInfo: row, isEdit: false,fileType:row.extendName.toLowerCase() })
 				return false
 			}
 			//  若当前点击项是 markdown 文档

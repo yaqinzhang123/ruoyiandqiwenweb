@@ -340,3 +340,10 @@ export function getListApi(params) {
 	  params
 	})
 }
+export function previewerDWG(params){
+	return request({
+		url: '/filetransfer/previewerDWG',
+		method: 'GET',
+		params
+	  })
+}

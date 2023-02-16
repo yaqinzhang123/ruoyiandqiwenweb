@@ -1,6 +1,6 @@
 <template>
   <transition name="el-fade-in-linear el-fade-in">
-    <div class="code-preview-wrapper"  v-show="visible">
+    <div class="code-preview-wrapper" v-show="visible">
       <!-- 顶部信息栏 & 工具栏 -->
       <div class="tip-wrapper" v-if="visible">
         <div class="name" :title="$file.getFileNameComplete(fileInfo)">
@@ -30,9 +30,9 @@
         </div>
       </div>
       <!-- 代码编辑区域 -->
-      <div class="code-editor-wrapper" v-loading="dxfLoading" >
+      <div class="code-editor-wrapper" v-loading="dxfLoading">
 
-        <div id="dxf-view" class="dxfView" ref="dxfView" > 
+        <div id="dxf-view" class="dxfView" ref="dxfView">
         </div>
 
 
@@ -50,7 +50,7 @@ import {
 } from '@/libs/map.js'
 // 文件修改相关
 import store from '@/store/index.js'
-import { getFilePreview } from '@/api/file/file.js'
+import { getFilePreview, previewerDWG } from '@/api/file/file.js'
 import DxfParser from 'dxf-parser'
 import { Viewer } from '/public/threedxf/three-dxf.js'
 export default {
@@ -128,27 +128,30 @@ export default {
      */
     getCodeText() {
       this.dxfLoading = true;
-      getFilePreview({
-        userFileId: this.fileInfo.userFileId,
-        isMin: false,
-        shareBatchNum: this.fileInfo.shareBatchNum,
-        extractionCode: this.fileInfo.extractionCode,
-        token: getToken()
-      }).then((res) => {
-        this.createFileform(res);
-      })
-    },   
+      if (this.fileType == 'dxf') {
+        getFilePreview({
+          userFileId: this.fileInfo.userFileId,
+          isMin: false,
+          shareBatchNum: this.fileInfo.shareBatchNum,
+          extractionCode: this.fileInfo.extractionCode,
+          token: getToken()
+        }).then((res) => {
+          this.createFileform(res);
+        })
+      } else {
+      }
+    },
     createFileform(res) {
       var parser = new DxfParser();
       var dxf = parser.parseSync(res);
       document.getElementById('dxf-view').innerHTML = ""
-      let  width=this.$refs.dxfView.offsetWidth;
-      let  height=this.$refs.dxfView.offsetHeight;
-      Viewer(dxf, document.getElementById('dxf-view'), width, height,this.LoadingClose);
-     
+      let width = this.$refs.dxfView.offsetWidth;
+      let height = this.$refs.dxfView.offsetHeight;
+      Viewer(dxf, document.getElementById('dxf-view'), width, height, this.LoadingClose);
+
     },
-    LoadingClose(){
-      this.dxfLoading=false
+    LoadingClose() {
+      this.dxfLoading = false
     },
     closedxfPreview() {
       this.visible = false
@@ -159,7 +162,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
 @import '@/assets/styles/varibles.scss';
 @import '@/assets/styles/mixin.scss';
 
@@ -268,7 +270,8 @@ export default {
     margin: 56px auto 0 auto;
     width: 70vw !important;
     height: calc(100vh - 80px);
-    .dxfView{
+
+    .dxfView {
       width: 70vw;
       height: calc(100vh - 80px);
       background: #fff;
