@@ -347,3 +347,11 @@ export function previewerDWG(params){
 		params
 	  })
 }
+// 修改存储大小
+export function setTotalStorage(params) {
+	return request({
+	  url: '/filetransfer/setTotalStorage',
+	  method: 'get',
+	  params
+	})
+}
