@@ -85,7 +85,7 @@ export const markdownFileType = ['markdown', 'md']
 /**
  * dxf 文件后缀
  */
-export const dxfFileType = ['dxf']
+export const dxfFileType = ['dxf','dwg']
 
 /**
  * 文件展示模式选择列表时，所有可供选择的表格列名

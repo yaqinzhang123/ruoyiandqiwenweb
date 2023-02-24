@@ -114,6 +114,19 @@ export const constantRoutes = [
 			component: () =>
 				import(/* webpackChunkName: "onlyOffice" */ '@/views/file/file/OnlyOffice.vue')
 		},
+    // {
+    //   path: '/webgis/routeContent',
+    //   name: 'routeContent',
+    //   component: () => import('@/views/webgis/routeContent.vue'),
+    //   // meta: {
+    //   //   title: '分享',
+    //   //   content: {
+    //   //     description: '查看他人分享'
+    //   //   }
+    //   // },
+    //   props: true,
+    //   hidden: true,
+    // },
 ]
 
 // 动态路由，基于用户权限动态去加载

@@ -126,8 +126,7 @@ export default {
     /**
      * 获取代码文本内容
      */
-    getCodeText() {
-      this.dxfLoading = true;
+    getCodeText() {   
       if (this.fileType == 'dxf') {
         getFilePreview({
           userFileId: this.fileInfo.userFileId,
@@ -136,9 +135,19 @@ export default {
           extractionCode: this.fileInfo.extractionCode,
           token: getToken()
         }).then((res) => {
+          this.dxfLoading = true;
           this.createFileform(res);
         })
       } else {
+        previewerDWG({
+          userFileId: this.fileInfo.userFileId,
+          isMin: false,
+          shareBatchNum: this.fileInfo.shareBatchNum,
+          extractionCode: this.fileInfo.extractionCode,
+          token: getToken()
+        }).then((res) => {
+          // this.createFileform(res);
+        })
       }
     },
     createFileform(res) {
