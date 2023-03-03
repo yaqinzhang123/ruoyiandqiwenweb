@@ -1,9 +1,11 @@
 <template>
     <div>
-        <div class="container">
+        
+            <el-dialog :visible.sync="dialogVisible" @close="closeUpload" width="50%">
+                <div class="container">
             <el-row class="handle-box" >
-                <el-col :span="6">
-                    <el-select v-model="modelType" placeholder="请选择模型类型">
+                <el-col :span="8">
+                    模型类型：<el-select v-model="modelType" size="small" placeholder="请选择模型类型">
                     <el-option
                     v-for="item in modelParams"
                     :key="item.value"
@@ -12,27 +14,27 @@
                     </el-option>
                 </el-select>
                 </el-col>
-                <el-col :span="18">
-                    <div id="extend-upload-chooseFile"
+                <el-col :span="16">
+                    <!-- <div id="extend-upload-chooseFile"
                      style="float: left;margin: 0px 5px;">
                     <i class="el-icon-plus"></i>
-                    选择文件</div>
+                    选择文件</div> -->
                 <el-button
                         size="small"
                         type="success"
                         :icon="uploadStaus"
                         class="handle-del "
-                        @click="uploadToServer()"
+                        @click="handelUpload()"
                         :disabled="uploadBtnDisabled"
-                >开始上传</el-button>
-                <el-button
+                >上传文件</el-button>
+                <!-- <el-button
                         type="danger"
                         size="small"
                         icon="el-icon-close"
                         class="handle-del "
                         @click="clearFiles()"
                         :disabled="uploadBtnDisabled"
-                >清空文件</el-button>
+                >清空文件</el-button> -->
                 </el-col>
                
     
@@ -40,7 +42,7 @@
             <div class="showMsg">
                 <TipsTable/>
             </div>
-            <el-table
+            <!-- <el-table
                     :data="fileListData"
                     style="width: 100%">
                 <el-table-column
@@ -77,9 +79,10 @@
                         >查看</el-button>
                     </template>
                 </el-table-column>
-            </el-table>
+            </el-table> -->
         </div>
-    </div>
+        </el-dialog>
+        </div>
     </template>
     <script>
     import $ from 'jquery'
@@ -130,6 +133,10 @@
             fileListData:{
                 type:Array,
                 default:[]
+            },
+            dialogVisible:{
+                type:Boolean,
+                default:false
             }
     
         },
@@ -174,6 +181,22 @@
             this.events();
         },
         methods: {
+            handelUpload(){
+                this.$openBox.uploadFileGis({
+                    params: {
+                        projectId:this.options.projectId,
+                        modelType:this.modelType
+                    },
+                    uploadWay:1,
+                    serviceEl: this,
+                    callType: 1 //  callType 调用此服务的方式：1 - 顶部栏，2 - 右键菜单
+                })
+                this.dialogVisible=false
+            },
+            closeUpload(){
+                this.dialogVisible=false
+                this.$emit('output')
+            },
             createUploader(){
                 var fileType=this.options.fileType;
                 this.uploader = webUploader.create({

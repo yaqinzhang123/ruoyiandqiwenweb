@@ -141,14 +141,13 @@
 </template>
 
 <script>
-	import upload from '@/components/Webgis/upload.vue'
 	import webupload from '@/components/Webgis/webUpload.vue'
 	import api from '@/api/webgis/index'
 	import router from '@/router/index.js'
 	import { getToken } from '@/utils/auth'
 	let BASE_URL = process.env.VUE_APP_BASE_API
 	export default {
-		components: {upload,webupload},
+		components: {webupload},
 		data() {
 			return {
 				fileList:[],//显示集合

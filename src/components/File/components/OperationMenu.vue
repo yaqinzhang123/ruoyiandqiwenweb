@@ -468,12 +468,12 @@ export default {
 @import '@/assets/styles/varibles.scss';
 
 .operation-menu-wrapper.file-type-6 {
-  margin: 8px 0;
+//   margin: 8px 0;
   justify-content: flex-end;
 }
 
 .operation-menu-wrapper {
-  padding: 16px 0;
+//   padding: 16px 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
