@@ -162,6 +162,7 @@
             :options="options"
             :fileListData="fileList"
             @output="handelUpload"
+            @initListData="initListData"
           >
           </webupload>
       <el-dialog :visible.sync="dialogVisible1" width="50%"    title="修改"
@@ -225,7 +226,7 @@ export default {
         resourceType: 0,
         currentPage: 1,
         pageSize: 10,
-        projectId: 40,
+        projectId: 51,
         modelType: 0,
       },
       searchRspData: {
@@ -521,9 +522,9 @@ export default {
     // alert(this.$refs.list.offsetHeight)
     // this.tableHeight= '100%'
     // console.log(this.tableHeight)
-    this.searchReqParam.projectId = 40;
-    this.uploadData.projectId = 40;
-    this.options.projectId = 40;
+    this.searchReqParam.projectId = 51;
+    this.uploadData.projectId = 51;
+    this.options.projectId = 51;
     this.initListData();
     // alert(option.projectId+"::"+option.projectType)
   },

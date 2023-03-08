@@ -223,17 +223,13 @@ export default {
 				return
 			}
 			let result = JSON.parse(response)
-			if (result.code==10000) {
+			if (result.code==200) {
 				file.statusStr = ''
 				if (this.filesLength === 1) {
 					// 本次所有的文件均已上传完毕
 					this.$message.success(`上传完毕`)
-					// callType 调用此服务的方式：1 - 顶部栏，2 - 右键菜单
-					if (this.callType === 1) {
-						this.serviceEl.$emit('getTableDataByType')
-					} else {
-						this.serviceEl.getTableDataByType()
-					}
+					// callType 调用此服务的方式：1 - 顶部栏，2 - 右键菜单			
+					this.serviceEl.output()
 					this.serviceEl.$store.dispatch('showStorage')
 					this.callback(true)
 				}

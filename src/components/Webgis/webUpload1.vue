@@ -193,6 +193,9 @@
                 })
                 this.dialogVisible=false
             },
+            output(){
+                this.$emit('initListData')
+            },
             closeUpload(){
                 this.dialogVisible=false
                 this.$emit('output')
