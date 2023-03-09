@@ -10,6 +10,7 @@
 			@files-added="handleFilesAdded"
 			@file-success="handleFileSuccess"
 			@file-error="handleFileError"
+			@dragleave="hideUploadMask"
 		>
 			<uploader-unsupport></uploader-unsupport>
 			<!-- 选择按钮 在这里隐藏 -->
@@ -118,6 +119,7 @@
 import store from '@/store/index.js'
 import SparkMD5 from 'spark-md5'
 import { getToken } from '@/utils/auth'
+import { mapState } from 'vuex'
 
 export default {
 	data() {
@@ -172,6 +174,7 @@ export default {
 		}
 	},
 	computed: {
+		...mapState(['showUploadMask']),
 		// Uploader	上传组件实例
 		uploaderInstance() {
 			return this.$refs.uploader.uploader
@@ -182,6 +185,12 @@ export default {
 		}
 	},
 	methods: {
+		// 隐藏拖拽上传遮罩
+		hideUploadMask(e) {
+			e.stopPropagation();
+			e.preventDefault();
+			this.dropBoxShow = false;
+		},
 		/**
 		 * 上传组件预处理
 		 */

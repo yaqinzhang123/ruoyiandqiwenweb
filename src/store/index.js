@@ -10,6 +10,7 @@ import getters from './getters'
 import common from './modules/common' //  公共模块
 import fileList from './modules/fileList' //  公共模块
 import sideMenu from './modules/sideMenu' //  公共模块
+import uploadFile from './modules/uploadFile' //  拖拽上传文件模块
 
 Vue.use(Vuex)
 
@@ -31,7 +32,8 @@ mutations:{
     settings,
     common,
     fileList,
-    sideMenu
+    sideMenu,
+    uploadFile
   },
   getters
 })

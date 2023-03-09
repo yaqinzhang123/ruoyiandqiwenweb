@@ -1,5 +1,5 @@
 <template>
-	  <div class="app-container">
+	  <div class="app-container"  @dragenter="showUploadMask">
 		<!-- 操作按钮 -->
 		<el-header height="auto">
 			<OperationMenu
@@ -320,7 +320,14 @@ export default {
 					this.$message.error(res.message)
 				}
 			})
-		}
+		},
+		  // 显示拖拽上传文件遮罩
+		  showUploadMask(e) {
+			e.stopPropagation();
+			e.preventDefault();
+			console.log("showUploadMask")
+			this.$store.commit("showUploadMask");
+    },
 	}
 }
 </script>
