@@ -29,7 +29,7 @@ export default {
       let that = this;
       if ("WebSocket" in window) {
         console.log("您的浏览器支持 WebSocket!");
-        that.ws = new WebSocket(`ws://192.168.30.139:8080/ws`);
+        that.ws = new WebSocket(`ws://192.168.30.217:8080/ws`);
         that.$globalWebSocket.setWs(that.ws);
         // that.ws.onopen = that.onopen();
         that.ws.onopen = function() {

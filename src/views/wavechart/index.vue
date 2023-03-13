@@ -63,7 +63,7 @@ export default {
             level: 5,
             route:0,
             mylinkageClicked:false,
-            wsUrl:'ws://192.168.30.139:8080/ws',
+            wsUrl:'ws://192.168.30.217:8080/ws',
         }
     },
     beforeDestroy() {

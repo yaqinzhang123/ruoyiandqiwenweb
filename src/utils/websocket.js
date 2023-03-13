@@ -1,7 +1,7 @@
 //import Vue from 'vue'
 let socket = null;
 let lockReconnet = false; //避免重复连接
-const wsUrl = 'ws:192.168.30.139:8080/ws';
+const wsUrl = 'ws:192.168.30.217:8080/ws';
 let isReconnet = false;
 let globalCallback = null, sendData = null; //把要发送给socket的数据和处理socket返回数据的回调保存起来
 let createSocket = url => { //创建socket

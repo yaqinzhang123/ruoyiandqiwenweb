@@ -127,7 +127,9 @@ export default {
      * 获取代码文本内容
      */
     getCodeText() {   
-      if (this.fileType == 'dxf') {
+      console.log(this.fileInfo);
+      let fileType=""
+      if (this.fileInfo.extendName == 'dxf') {
         getFilePreview({
           userFileId: this.fileInfo.userFileId,
           isMin: false,
